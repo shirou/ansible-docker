@@ -1,0 +1,22 @@
+- name: web server testing
+  hosts: web
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: get nginx conf
+      stat: path=/etc/nginx/conf.d
+      register: n
+    - name: check nginx
+      assert:
+        that:
+          - n.stat.exists
+          - p.stat.isdir
+
+    - name: get common user
+      stat: path="/home/{{ username }}"
+      register: home
+    - name: check common user
+      assert:
+        that:
+          - home.stat.exists
+          - home.stat.isdir
