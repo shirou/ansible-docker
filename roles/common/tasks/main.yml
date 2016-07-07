@@ -1,0 +1,38 @@
+- name: install sudo when ci environment
+  apt: name=sudo state=present
+  when: mode == "ci"
+
+- name: locales
+  locale_gen: name=ja_JP.UTF-8 state=present
+
+- include: timezone.yml
+
+- name: hostname (will fail when CI)
+  hostname: name="{{ mode }}-{{ inventory_hostname }}"
+  when: mode != "ci"
+
+- name: hosts (will fail when CI)
+  lineinfile:
+    dest="/etc/hosts"
+    state=present
+    create=yes
+    line="127.0.0.1 {{ mode }}-{{ inventory_hostname }}"
+  when: mode != "ci"
+
+- name: create common user group
+  group: name="{{ username }}"
+
+- name: create common user
+  user:
+    name: "{{ username }}"
+    groups: "{{ username }},systemd-journal"
+    shell: /bin/bash
+    state: present
+
+- name: create sudo file for common user
+  template:
+    src: sudoers.j2
+    dest: "/etc/sudoers.d/{{ username }}"
+    owner: root
+    group: root 
+    mode: 0440

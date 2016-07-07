@@ -1,0 +1,7 @@
+[all:vars]
+mode=ci
+branch=master
+ansible_user=root
+ansible_connection=docker
+
+

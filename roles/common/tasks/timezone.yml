@@ -1,0 +1,12 @@
+- name: set /etc/localtime
+  file: 
+    src: /usr/share/zoneinfo/Asia/Tokyo 
+    dest: /etc/localtime 
+    state: link
+    force: yes
+- name: timezone
+  lineinfile: 
+    dest: /etc/timezone
+    line: "Asia/Tokyo"
+  notify:
+    - update tzdata

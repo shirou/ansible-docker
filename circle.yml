@@ -1,0 +1,14 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - docker pull ubuntu:16.04
+
+test:
+  override:
+    - docker run -d --name web ubuntu:16.04 /bin/sleep 3600
+    - ansible-playbook -i inventory_docker web.yml -l running

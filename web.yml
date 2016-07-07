@@ -1,0 +1,17 @@
+- name: ubuntu 16.04 does not have python2, install it
+  hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: apt-get update
+      raw: apt-get update
+    - name: install python2
+      raw: apt-get install -y python-minimal
+
+- name: actual tasks 
+  hosts: web
+  vars_files:
+    - vars.yml
+  roles:
+    - common
+    - bennojoy.nginx
