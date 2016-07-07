@@ -3,6 +3,8 @@ machine:
     Asia/Tokyo
   services:
     - docker
+  environment:
+    DOCKER_API_VERSION: 1.20
 
 dependencies:
   pre:
