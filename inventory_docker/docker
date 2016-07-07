@@ -3,6 +3,6 @@ mode=ci
 branch=master
 ansible_user=root
 #ansible_connection=docker
-ansible_connection=lxc
+ansible_connection=lxd
 
 
