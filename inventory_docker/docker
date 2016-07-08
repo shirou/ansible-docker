@@ -2,7 +2,6 @@
 mode=ci
 branch=master
 ansible_user=root
-#ansible_connection=docker
-ansible_connection=libvirt_lxc
+ansible_connection=docker
 
 

@@ -5,12 +5,12 @@
   tasks:
     - name: get nginx conf
       stat: path=/etc/nginx/conf.d
-      register: n
+      register: nginx
     - name: check nginx
       assert:
         that:
-          - n.stat.exists
-          - p.stat.isdir
+          - nginx.stat.exists
+          - nginx.stat.isdir
 
     - name: get common user
       stat: path="/home/{{ username }}"
