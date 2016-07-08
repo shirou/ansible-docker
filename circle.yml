@@ -2,7 +2,7 @@ machine:
   services:
     - docker
   environment:
-    DOCKER_HOST: "45.32.55.64:2376"  # temporary
+    DOCKER_HOST: "198.51.100.23:2376"
     DOCKER_API_VERSION: "1.23"
 
 dependencies:
