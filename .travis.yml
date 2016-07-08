@@ -19,7 +19,7 @@ before_install:
   - docker run -d --name web ubuntu:16.04 /bin/sleep 3600
 
 install:
-  - pip install ansible ansible-lint
+  - sudo pip install ansible ansible-lint
   - ansible --version
 
 script:
