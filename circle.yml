@@ -8,7 +8,7 @@ machine:
 dependencies:
   pre:
     - docker pull ubuntu:16.04
-    - pip install ansible ansible-lint docker-py
+    - sudo pip install ansible ansible-lint docker-py
 
 test:
   override:
