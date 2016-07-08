@@ -1,10 +1,9 @@
 machine:
-  timezone:
-    Asia/Tokyo
   services:
     - docker
   environment:
-    DOCKER_API_VERSION: "1.20"
+    DOCKER_HOST: "45.32.55.64:2376"  # temporary
+    DOCKER_API_VERSION: "1.23"
 
 dependencies:
   pre:
